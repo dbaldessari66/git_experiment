@@ -320,27 +320,17 @@ Our next graph will look at Q2 company’s revenue from 2016 to 2020. This
 is to see where revenues were in the past and see if there are any
 deceleration or acceleration.
 
-By the way, this graph is interactive!
-
 ``` r
 #Read in Data
 Q_2 <- read_excel("~/Downloads/Q_2.xlsx")
 #Take Highest Growth and Profitable Stocks and Chart Revenues
-Q_2 %>%
-  plot_ly(x = ~ Quarter) %>%
-  add_lines(x = ~ Quarter, y = ~ BA_REV, name = "BA") %>%
-  add_lines(x = ~ Quarter, y = ~ CAT_REV, name = "CAT") %>%
-  add_lines(x = ~ Quarter, y = ~ DE_REV, name = "DE") %>%
-  add_lines(x = ~ Quarter, y = ~ PH_REV, name = "PH") %>%
-  add_lines(x = ~ Quarter, y = ~ TT_REV, name = "TT") %>%
-  add_lines(x = ~ Quarter, y = ~ CMI_REV, name = "CMI") %>%
-  add_lines(x = ~ Quarter, y = ~ PCAR_REV, name = "PCAR")%>%
-  layout(title = "Quartile 2 Revenue Comparison")%>%
-  layout(yaxis = list(title = "Revenue (TTM) in Millions"), xaxis = list(title = "Quarters"))
+
+ggplot(Q_2, aes(x = Quarter,y = Revenue, color = Ticker)) +  
+  geom_line()+
+  scale_color_manual(values=c("Green","Black","Yellow","Blue","Red","Purple","Orange"))
 ```
 
-<div id="htmlwidget-9e12e04ce0c662fe1742" style="width:672px;height:480px;" class="plotly html-widget"></div>
-<script type="application/json" data-for="htmlwidget-9e12e04ce0c662fe1742">{"x":{"visdat":{"e4d468b26414":["function () ","plotlyVisDat"]},"cur_data":"e4d468b26414","attrs":{"e4d468b26414":{"x":{},"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"y":{},"type":"scatter","mode":"lines","name":"BA","inherit":true},"e4d468b26414.1":{"x":{},"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"y":{},"type":"scatter","mode":"lines","name":"CAT","inherit":true},"e4d468b26414.2":{"x":{},"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"y":{},"type":"scatter","mode":"lines","name":"DE","inherit":true},"e4d468b26414.3":{"x":{},"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"y":{},"type":"scatter","mode":"lines","name":"PH","inherit":true},"e4d468b26414.4":{"x":{},"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"y":{},"type":"scatter","mode":"lines","name":"TT","inherit":true},"e4d468b26414.5":{"x":{},"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"y":{},"type":"scatter","mode":"lines","name":"CMI","inherit":true},"e4d468b26414.6":{"x":{},"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"y":{},"type":"scatter","mode":"lines","name":"PCAR","inherit":true}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"title":"Quartile 2 Revenue Comparison","yaxis":{"domain":[0,1],"automargin":true,"title":"Revenue (TTM) in Millions"},"xaxis":{"domain":[0,1],"automargin":true,"title":"Quarters"},"hovermode":"closest","showlegend":true},"source":"A","config":{"showSendToCloud":false},"data":[{"x":[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19],"y":[22632,24755,23898,22211,21961,23051,24223,24770,23382,24258,25146,28341,22917,15751,19980,17911,16908,11807,14139],"type":"scatter","mode":"lines","name":"BA","marker":{"color":"rgba(31,119,180,1)","line":{"color":"rgba(31,119,180,1)"}},"error_y":{"color":"rgba(31,119,180,1)"},"error_x":{"color":"rgba(31,119,180,1)"},"line":{"color":"rgba(31,119,180,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19],"y":[9461,10342,9160,9574,9822,11331,11413,12896,12859,14011,13510,14342,13466,14432,12758,13144,10635,9997,9881],"type":"scatter","mode":"lines","name":"CAT","marker":{"color":"rgba(255,127,14,1)","line":{"color":"rgba(255,127,14,1)"}},"error_y":{"color":"rgba(255,127,14,1)"},"error_x":{"color":"rgba(255,127,14,1)"},"line":{"color":"rgba(255,127,14,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19],"y":[7875,6724,6520,5625,8287,7808,8018,6914,10720,10308,9417,7984,11342,10036,9896,7631,9253,8925,9731],"type":"scatter","mode":"lines","name":"DE","marker":{"color":"rgba(44,160,44,1)","line":{"color":"rgba(44,160,44,1)"}},"error_y":{"color":"rgba(44,160,44,1)"},"error_x":{"color":"rgba(44,160,44,1)"},"line":{"color":"rgba(44,160,44,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19],"y":[2829,2957,2743,2671,3119,3496,3365,3371,3750,3817,3479,3472,3688,3681,3335,3498,3702,3161,3231],"type":"scatter","mode":"lines","name":"PH","marker":{"color":"rgba(214,39,40,1)","line":{"color":"rgba(214,39,40,1)"}},"error_y":{"color":"rgba(214,39,40,1)"},"error_x":{"color":"rgba(214,39,40,1)"},"line":{"color":"rgba(214,39,40,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19],"y":[225,513,512,353,215,558,506,387,243,640,587,447,237,567,537,678,154,424,567],"type":"scatter","mode":"lines","name":"TT","marker":{"color":"rgba(148,103,189,1)","line":{"color":"rgba(148,103,189,1)"}},"error_y":{"color":"rgba(148,103,189,1)"},"error_x":{"color":"rgba(148,103,189,1)"},"line":{"color":"rgba(148,103,189,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19],"y":[4291,4528,4187,4503,4589,5078,5285,5476,5570,6132,5943,6126,6004,6221,5768,5578,5011,3852,5118],"type":"scatter","mode":"lines","name":"CMI","marker":{"color":"rgba(140,86,75,1)","line":{"color":"rgba(140,86,75,1)"}},"error_y":{"color":"rgba(140,86,75,1)"},"error_x":{"color":"rgba(140,86,75,1)"},"line":{"color":"rgba(140,86,75,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19],"y":[4300,4413,4249,4071,4238,4704,5060,5455,5654,5805,5757,6280,6488,6628,6367,6117,5162,3062,4936],"type":"scatter","mode":"lines","name":"PCAR","marker":{"color":"rgba(227,119,194,1)","line":{"color":"rgba(227,119,194,1)"}},"error_y":{"color":"rgba(227,119,194,1)"},"error_x":{"color":"rgba(227,119,194,1)"},"line":{"color":"rgba(227,119,194,1)"},"xaxis":"x","yaxis":"y","frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.2,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+![](Pandemic_Investing_files/figure-gfm/unnamed-chunk-12-1.png)<!-- -->
 
 The Pandemic begins to show its effects from Quarter 16 through the
 present day. Trough revenues for the group are Quarter 2 of 2020 (18th
